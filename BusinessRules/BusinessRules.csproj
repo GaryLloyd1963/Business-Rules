@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18375826-F22C-4CA3-BC25-05417DBE70F8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessRules</RootNamespace>
+    <AssemblyName>BusinessRules</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StructureMap, Version=4.4.3.564, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.4.3\lib\net45\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionsSourceProcessor\ActionLogger.cs" />
+    <Compile Include="ActionsSourceProcessor\IActionLogger.cs" />
+    <Compile Include="ActionsSourceProcessor\SingleActionPerformer.cs" />
+    <Compile Include="ActionsSourceProcessor\ActionsPerformer.cs" />
+    <Compile Include="ActionsSourceProcessor\IActionsSource.cs" />
+    <Compile Include="ActionsSource\ActionsSourceFactory.cs" />
+    <Compile Include="ActionsSource\IActionsSourceFactory.cs" />
+    <Compile Include="Core\ContainerManager.cs" />
+    <Compile Include="PaymentReceivedSteps\AgentCommissionStep.cs" />
+    <Compile Include="PaymentReceivedSteps\AddCompulsoryFreeProductStep.cs" />
+    <Compile Include="PaymentReceivedSteps\UpgradeMembershipStep.cs" />
+    <Compile Include="PaymentReceivedSteps\NewMembershipStep.cs" />
+    <Compile Include="PaymentReceivedSteps\PackingSlipForRoyaltyDeptStep.cs" />
+    <Compile Include="PaymentReceivedSteps\PackingSlipForShipmentStep.cs" />
+    <Compile Include="ActionsSourceProcessor\IAction.cs" />
+    <Compile Include="ActionsSourceProcessor\ISingleActionPerformer.cs" />
+    <Compile Include="ActionsSourceProcessor\IStep.cs" />
+    <Compile Include="ActionsSourceProcessor\IActionsPerformer.cs" />
+    <Compile Include="ActionsSource\PaymentReceivedActionsSource.cs" />
+    <Compile Include="PaymentReceivedActions\AddCompulsoryFreeProductAction.cs" />
+    <Compile Include="PaymentReceivedActions\SendMembershipEmailAction.cs" />
+    <Compile Include="PaymentReceivedActions\SendCommissionToAgentAction.cs" />
+    <Compile Include="PaymentReceivedActions\UpgradeMembershipAction.cs" />
+    <Compile Include="PaymentReceivedActions\ActivateMembershipAction.cs" />
+    <Compile Include="Core\ProcessConstants.cs" />
+    <Compile Include="Core\ProductConstants.cs" />
+    <Compile Include="Domain\PackingSlip.cs" />
+    <Compile Include="Domain\PaymentReceived.cs" />
+    <Compile Include="Domain\ProductItem.cs" />
+    <Compile Include="Domain\ProductItemOnOrder.cs" />
+    <Compile Include="Domain\PurchaseOrder.cs" />
+    <Compile Include="PaymentReceivedActions\SendPackingSlipAction.cs" />
+    <Compile Include="ActionsSourceProcessor\ActionsSourceProcessor.cs" />
+    <Compile Include="ActionsSourceProcessor\IActionsSourceProcessor.cs" />
+    <Compile Include="ProcessHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
